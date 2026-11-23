@@ -7,28 +7,30 @@
   <link rel="stylesheet" href="styles/styles.css" />
 </head>
 <body>
-  <div class="ambient-bg" aria-hidden="true">
-    <span class="orb orb-1"></span>
-    <span class="orb orb-2"></span>
-    <span class="orb orb-3"></span>
+  <div class="win11-backdrop" aria-hidden="true">
+    <span class="win-glow win-glow-1"></span>
+    <span class="win-glow win-glow-2"></span>
   </div>
 
-  <header class="glass-header">
+  <header class="win11-titlebar">
     <div class="container nav">
-      <a class="brand" href="#">MK <span>Tecky</span></a>
+      <a class="brand" href="#">
+        <span class="win-window-icon" aria-hidden="true"></span>
+        MK <span>Tecky</span>
+      </a>
       <nav class="nav-links" aria-label="Primary Navigation">
         <a href="#services">Services</a>
         <a href="#plans">Prepaid &amp; Postpaid</a>
         <a href="#booking">Book Repair</a>
       </nav>
-      <a class="btn btn-primary" href="#booking">Book Service</a>
+      <a class="btn btn-accent" href="#booking">Book Service</a>
     </div>
   </header>
 
   <main class="container">
-    <section class="hero">
-      <div>
-        <span class="badge glass-pill">MK Tecky | Services • mktecky.com • Mobile, Laptop &amp; PC Hardware Care</span>
+    <section class="hero reveal">
+      <div class="hero-copy">
+        <span class="badge win11-pill">MK Tecky | Services • mktecky.com • Mobile, Laptop &amp; PC Care</span>
         <h1>Fast Component Repairs with Prepaid UPI &amp; Postpaid Options</h1>
         <p>
           Genuine part replacements and diagnostics for smartphones, laptops, and desktop PCs.
@@ -36,32 +38,33 @@
           <strong>Postpaid</strong> to pay after inspection/completion.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#booking">Schedule Repair</a>
-          <a class="btn btn-glass" href="#services">Browse Components</a>
+          <a class="btn btn-accent" href="#booking">Schedule Repair</a>
+          <a class="btn btn-subtle" href="#services">Browse Components</a>
         </div>
         <div class="stats">
-          <div class="stat-box glass-panel">
+          <div class="stat-box mica-card">
             <strong>3 Devices</strong>
             <span>Mobile, Laptop &amp; PC</span>
           </div>
-          <div class="stat-box glass-panel">
+          <div class="stat-box mica-card">
             <strong>UPI Ready</strong>
             <span>GPay, PhonePe, Paytm</span>
           </div>
-          <div class="stat-box glass-panel">
+          <div class="stat-box mica-card">
             <strong>2 Billing Modes</strong>
             <span>Prepaid &amp; Postpaid</span>
           </div>
         </div>
       </div>
 
-      <div class="card glass-panel" id="booking">
+      <div class="card mica-card booking-card" id="booking">
         <h2 class="card-title">Instant Service &amp; Payment Booking</h2>
         <p class="card-subtitle">
           Select billing mode, component service, and device details.
         </p>
 
-        <div class="mode-switch glass-inset" role="group" aria-label="Billing Mode">
+        <div class="mode-switch win11-inset" role="group" aria-label="Billing Mode">
+          <span class="mode-thumb" id="modeThumb" aria-hidden="true"></span>
           <button type="button" id="modePrepaid" class="active" data-mode="prepaid">
             Prepaid (UPI)
           </button>
@@ -72,12 +75,12 @@
 
         <form id="repairForm">
           <label for="serviceSelect">Select Component / Service</label>
-          <select id="serviceSelect" class="glass-input"></select>
+          <select id="serviceSelect" class="win11-input"></select>
 
           <label for="deviceModel">Device Brand &amp; Model</label>
           <input
             id="deviceModel"
-            class="glass-input"
+            class="win11-input"
             type="text"
             placeholder="e.g., iPhone 13 / Dell Inspiron 15 / Custom Ryzen PC"
             required
@@ -86,7 +89,7 @@
           <label for="customerContact">Your Name &amp; Phone / WhatsApp</label>
           <input
             id="customerContact"
-            class="glass-input"
+            class="win11-input"
             type="text"
             placeholder="e.g., Rahul Sharma - +91 98765 43210"
             required
@@ -95,12 +98,12 @@
           <label for="notes">Issue Notes (Optional)</label>
           <textarea
             id="notes"
-            class="glass-input"
+            class="win11-input"
             rows="2"
             placeholder="Battery health drop, cracked glass, no display, port loose..."
           ></textarea>
 
-          <div class="summary-box glass-inset">
+          <div class="summary-box win11-inset">
             <div class="summary-line">
               <span>Billing Mode:</span>
               <strong id="summaryMode">Prepaid (UPI)</strong>
@@ -119,7 +122,7 @@
             </div>
           </div>
 
-          <div id="upiSection" class="upi-box glass-upi">
+          <div id="upiSection" class="upi-box win11-upi panel-reveal">
             <strong class="success-text">UPI Payment Details (Prepaid)</strong>
             <div>UPI ID: <span class="upi-id" id="upiIdText">mktecky@okicici</span></div>
             <p class="upi-help">
@@ -128,27 +131,27 @@
             </p>
             <div class="upi-actions">
               <a id="upiIntentLink" class="btn btn-success" href="#">Open UPI App</a>
-              <button type="button" class="btn btn-glass" id="copyUpiBtn">Copy UPI ID</button>
+              <button type="button" class="btn btn-subtle" id="copyUpiBtn">Copy UPI ID</button>
             </div>
           </div>
 
-          <div id="postpaidSection" class="notice glass-inset hidden">
+          <div id="postpaidSection" class="notice win11-inset panel-reveal hidden">
             <strong>Postpaid Selected:</strong> Book your repair slot now with ₹0 advance. Final bill
             is paid after diagnosis/repair completion via UPI, card, or cash.
           </div>
 
           <div class="submit-wrap">
-            <button type="submit" class="btn btn-primary full-width" id="submitBtn">
+            <button type="submit" class="btn btn-accent full-width" id="submitBtn">
               Confirm Prepaid UPI Booking
             </button>
           </div>
         </form>
 
-        <div id="confirmationBox" class="notice glass-inset confirmation-box hidden"></div>
+        <div id="confirmationBox" class="notice win11-inset confirmation-box panel-reveal hidden"></div>
       </div>
     </section>
 
-    <section id="services">
+    <section id="services" class="reveal">
       <div class="section-head">
         <div>
           <h2>Hardware &amp; Component Services</h2>
@@ -157,16 +160,16 @@
       </div>
 
       <div class="tabs" role="tablist" aria-label="Service Categories">
-        <button type="button" class="tab glass-pill active" data-category="all">All Services</button>
-        <button type="button" class="tab glass-pill" data-category="mobile">Mobile</button>
-        <button type="button" class="tab glass-pill" data-category="laptop">Laptop</button>
-        <button type="button" class="tab glass-pill" data-category="pc">PC / Desktop</button>
+        <button type="button" class="tab win11-pill active" data-category="all">All Services</button>
+        <button type="button" class="tab win11-pill" data-category="mobile">Mobile</button>
+        <button type="button" class="tab win11-pill" data-category="laptop">Laptop</button>
+        <button type="button" class="tab win11-pill" data-category="pc">PC / Desktop</button>
       </div>
 
       <div class="grid-3" id="servicesGrid"></div>
     </section>
 
-    <section id="plans">
+    <section id="plans" class="reveal">
       <div class="section-head">
         <div>
           <h2>Prepaid vs. Postpaid Service Options</h2>
@@ -175,8 +178,8 @@
       </div>
 
       <div class="grid-2">
-        <div class="card glass-panel">
-          <span class="badge glass-pill">Prepaid • UPI</span>
+        <div class="card mica-card plan-card">
+          <span class="badge win11-pill">Prepaid • UPI</span>
           <h3 class="plan-title">Prepaid Service (UPI)</h3>
           <p class="plan-desc">
             Ideal when a known replacement component (battery, display, charging port, SSD, RAM) is needed.
@@ -188,8 +191,8 @@
           </ul>
         </div>
 
-        <div class="card glass-panel">
-          <span class="badge glass-pill badge-green">Postpaid • Pay After Service</span>
+        <div class="card mica-card plan-card">
+          <span class="badge win11-pill badge-green">Postpaid • Pay After Service</span>
           <h3 class="plan-title">Postpaid Service</h3>
           <p class="plan-desc">
             Ideal for motherboard/board faults, multi-component diagnostics, or office PC/laptop maintenance.
@@ -204,7 +207,7 @@
     </section>
   </main>
 
-  <footer class="glass-footer">
+  <footer class="win11-footer">
     <div class="container footer-inner">
       <span>© <span id="year"></span> MK Tecky | Services (mktecky.com). All rights reserved.</span>
       <span>Mobile • Laptop • PC Component Service</span>

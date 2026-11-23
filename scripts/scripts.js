@@ -38,14 +38,14 @@ function renderServices() {
     ? services
     : services.filter((s) => s.cat === currentCategory);
 
-  grid.innerHTML = filtered.map((s) => `
-    <div class="card service-card">
-      <span class="badge service-badge">${s.cat.toUpperCase()}</span>
+  grid.innerHTML = filtered.map((s, idx) => `
+    <div class="card mica-card service-card" style="--stagger: ${idx};">
+      <span class="badge win11-pill service-badge">${s.cat.toUpperCase()}</span>
       <h3>${s.name}</h3>
       <p>${s.desc}</p>
       <div class="price-row">
         <span class="price">${formatINR(s.price)}</span>
-        <button type="button" class="btn btn-outline" data-book-id="${s.id}">Book</button>
+        <button type="button" class="btn btn-subtle" data-book-id="${s.id}">Book</button>
       </div>
     </div>
   `).join("");
@@ -71,12 +71,27 @@ function selectService(id) {
   document.getElementById("booking").scrollIntoView({ behavior: "smooth" });
 }
 
+function replayAnimation(el) {
+  if (!el || el.classList.contains("hidden")) return;
+  el.classList.remove("panel-reveal");
+  void el.offsetWidth;
+  el.classList.add("panel-reveal");
+}
+
 function setBillingMode(mode) {
   billingMode = mode;
+  const switcher = document.querySelector(".mode-switch");
+  switcher.classList.toggle("is-postpaid", mode === "postpaid");
   document.getElementById("modePrepaid").classList.toggle("active", mode === "prepaid");
   document.getElementById("modePostpaid").classList.toggle("active", mode === "postpaid");
-  document.getElementById("upiSection").classList.toggle("hidden", mode !== "prepaid");
-  document.getElementById("postpaidSection").classList.toggle("hidden", mode !== "postpaid");
+
+  const upiSection = document.getElementById("upiSection");
+  const postpaidSection = document.getElementById("postpaidSection");
+  upiSection.classList.toggle("hidden", mode !== "prepaid");
+  postpaidSection.classList.toggle("hidden", mode !== "postpaid");
+
+  replayAnimation(mode === "prepaid" ? upiSection : postpaidSection);
+
   document.getElementById("submitBtn").textContent = mode === "prepaid"
     ? "Confirm Prepaid UPI Booking"
     : "Confirm Postpaid Booking";
@@ -109,8 +124,13 @@ function updateSummary() {
 }
 
 function copyUpiId() {
+  const btn = document.getElementById("copyUpiBtn");
+  const originalText = btn.textContent;
   navigator.clipboard?.writeText(UPI_ID);
-  alert("UPI ID copied: " + UPI_ID);
+  btn.textContent = "Copied!";
+  setTimeout(() => {
+    btn.textContent = originalText;
+  }, 1600);
 }
 
 function handleBooking(e) {
@@ -131,6 +151,29 @@ function handleBooking(e) {
     Mode: <strong>${billingMode.toUpperCase()}</strong> • Amount Due Now: <strong>${payable}</strong><br />
     Contact: ${contact}
   `;
+  replayAnimation(box);
+}
+
+function initScrollReveal() {
+  const targets = document.querySelectorAll(".reveal");
+  if (!("IntersectionObserver" in window)) {
+    targets.forEach((el) => el.classList.add("is-visible"));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12, rootMargin: "0px 0px -30px 0px" }
+  );
+
+  targets.forEach((el) => observer.observe(el));
 }
 
 function bindEvents() {
@@ -158,3 +201,4 @@ populateSelect();
 renderServices();
 bindEvents();
 updateSummary();
+initScrollReveal();
