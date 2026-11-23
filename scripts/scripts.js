@@ -39,13 +39,13 @@ function renderServices() {
     : services.filter((s) => s.cat === currentCategory);
 
   grid.innerHTML = filtered.map((s) => `
-    <div class="card service-card">
-      <span class="badge service-badge">${s.cat.toUpperCase()}</span>
+    <div class="card md-surface-1 service-card">
+      <span class="badge md-chip service-badge">${s.cat.toUpperCase()}</span>
       <h3>${s.name}</h3>
       <p>${s.desc}</p>
       <div class="price-row">
         <span class="price">${formatINR(s.price)}</span>
-        <button type="button" class="btn btn-outline" data-book-id="${s.id}">Book</button>
+        <button type="button" class="btn btn-outlined" data-book-id="${s.id}">Book</button>
       </div>
     </div>
   `).join("");
