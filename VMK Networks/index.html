@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VMK Networks | Mobile, Laptop &amp; PC Service — Prepaid UPI &amp; Postpaid</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#">VMK <span>Networks</span></a>
+      <nav class="nav-links" aria-label="Primary Navigation">
+        <a href="#services">Services</a>
+        <a href="#plans">Prepaid &amp; Postpaid</a>
+        <a href="#booking">Book Repair</a>
+      </nav>
+      <a class="btn btn-primary" href="#booking">Book Service</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <span class="badge">VMK Networks • mktecky.com • Mobile, Laptop &amp; PC Hardware Care</span>
+        <h1>Fast Component Repairs with Prepaid UPI &amp; Postpaid Options</h1>
+        <p>
+          Genuine part replacements and diagnostics for smartphones, laptops, and desktop PCs.
+          Choose <strong>Prepaid (UPI)</strong> for priority slot &amp; parts reservation, or
+          <strong>Postpaid</strong> to pay after inspection/completion.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#booking">Schedule Repair</a>
+          <a class="btn btn-outline" href="#services">Browse Components</a>
+        </div>
+        <div class="stats">
+          <div class="stat-box">
+            <strong>3 Devices</strong>
+            <span>Mobile, Laptop &amp; PC</span>
+          </div>
+          <div class="stat-box">
+            <strong>UPI Ready</strong>
+            <span>GPay, PhonePe, Paytm</span>
+          </div>
+          <div class="stat-box">
+            <strong>2 Billing Modes</strong>
+            <span>Prepaid &amp; Postpaid</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" id="booking">
+        <h2 class="card-title">Instant Service &amp; Payment Booking</h2>
+        <p class="card-subtitle">
+          Select billing mode, component service, and device details.
+        </p>
+
+        <div class="mode-switch" role="group" aria-label="Billing Mode">
+          <button type="button" id="modePrepaid" class="active" data-mode="prepaid">
+            Prepaid (UPI)
+          </button>
+          <button type="button" id="modePostpaid" data-mode="postpaid">
+            Postpaid (Pay Later)
+          </button>
+        </div>
+
+        <form id="repairForm">
+          <label for="serviceSelect">Select Component / Service</label>
+          <select id="serviceSelect"></select>
+
+          <label for="deviceModel">Device Brand &amp; Model</label>
+          <input
+            id="deviceModel"
+            type="text"
+            placeholder="e.g., iPhone 13 / Dell Inspiron 15 / Custom Ryzen PC"
+            required
+          />
+
+          <label for="customerContact">Your Name &amp; Phone / WhatsApp</label>
+          <input
+            id="customerContact"
+            type="text"
+            placeholder="e.g., Rahul Sharma - +91 98765 43210"
+            required
+          />
+
+          <label for="notes">Issue Notes (Optional)</label>
+          <textarea
+            id="notes"
+            rows="2"
+            placeholder="Battery health drop, cracked glass, no display, port loose..."
+          ></textarea>
+
+          <div class="summary-box">
+            <div class="summary-line">
+              <span>Billing Mode:</span>
+              <strong id="summaryMode">Prepaid (UPI)</strong>
+            </div>
+            <div class="summary-line">
+              <span>Estimated Service + Part:</span>
+              <strong id="summaryBase">₹0</strong>
+            </div>
+            <div class="summary-line">
+              <span>Prepaid Benefit / Inspection Note:</span>
+              <span id="summaryNote" class="accent-text">5% UPI discount applied</span>
+            </div>
+            <div class="summary-total">
+              <span id="payableLabel">Payable Now via UPI:</span>
+              <span id="summaryTotal">₹0</span>
+            </div>
+          </div>
+
+          <div id="upiSection" class="upi-box">
+            <strong class="success-text">UPI Payment Details (Prepaid)</strong>
+            <div>UPI ID: <span class="upi-id" id="upiIdText">vmknetworks@okicici</span></div>
+            <p class="upi-help">
+              Replace <code>vmknetworks@okicici</code> in <code>script.js</code> with your verified
+              merchant/business UPI ID before going live.
+            </p>
+            <div class="upi-actions">
+              <a id="upiIntentLink" class="btn btn-success" href="#">Open UPI App</a>
+              <button type="button" class="btn btn-outline" id="copyUpiBtn">Copy UPI ID</button>
+            </div>
+          </div>
+
+          <div id="postpaidSection" class="notice hidden">
+            <strong>Postpaid Selected:</strong> Book your repair slot now with ₹0 advance. Final bill
+            is paid after diagnosis/repair completion via UPI, card, or cash.
+          </div>
+
+          <div class="submit-wrap">
+            <button type="submit" class="btn btn-primary full-width" id="submitBtn">
+              Confirm Prepaid UPI Booking
+            </button>
+          </div>
+        </form>
+
+        <div id="confirmationBox" class="notice confirmation-box hidden"></div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="section-head">
+        <div>
+          <h2>Hardware &amp; Component Services</h2>
+          <p>Filter by device category and click any service to load it into your booking form.</p>
+        </div>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="Service Categories">
+        <button type="button" class="tab active" data-category="all">All Services</button>
+        <button type="button" class="tab" data-category="mobile">Mobile</button>
+        <button type="button" class="tab" data-category="laptop">Laptop</button>
+        <button type="button" class="tab" data-category="pc">PC / Desktop</button>
+      </div>
+
+      <div class="grid-3" id="servicesGrid"></div>
+    </section>
+
+    <section id="plans">
+      <div class="section-head">
+        <div>
+          <h2>Prepaid vs. Postpaid Service Options</h2>
+          <p>Flexible payment workflows for urgent component swaps and diagnostic repairs.</p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <span class="badge">Prepaid • UPI</span>
+          <h3 class="plan-title">Prepaid Service (UPI)</h3>
+          <p class="plan-desc">
+            Ideal when a known replacement component (battery, display, charging port, SSD, RAM) is needed.
+          </p>
+          <ul class="plan-list">
+            <li>Instant 5% prepaid discount on estimated service total</li>
+            <li>Priority spare-part allocation and technician slot</li>
+            <li>Supports UPI apps (GPay, PhonePe, Paytm, BHIM)</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <span class="badge badge-green">Postpaid • Pay After Service</span>
+          <h3 class="plan-title">Postpaid Service</h3>
+          <p class="plan-desc">
+            Ideal for motherboard/board faults, multi-component diagnostics, or office PC/laptop maintenance.
+          </p>
+          <ul class="plan-list">
+            <li>Zero upfront payment at booking time</li>
+            <li>Transparent estimate shared after hardware check</li>
+            <li>Settle via UPI, bank transfer, or cash upon completion</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> VMK Networks (mktecky.com). All rights reserved.</span>
+      <span>Mobile • Laptop • PC Component Service</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
