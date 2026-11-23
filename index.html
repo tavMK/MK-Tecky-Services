@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VMK Networks | Mobile, Laptop &amp; PC Service — Prepaid UPI &amp; Postpaid</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
-    rel="stylesheet"
-  />
+  <title>MK Tecky | Services</title>
   <link rel="stylesheet" href="styles/styles.css" />
 </head>
 <body>
-  <header class="md-appbar">
+  <div class="ambient-bg" aria-hidden="true">
+    <span class="orb orb-1"></span>
+    <span class="orb orb-2"></span>
+    <span class="orb orb-3"></span>
+  </div>
+
+  <header class="glass-header">
     <div class="container nav">
-      <a class="brand" href="#">VMK <span>Networks</span></a>
+      <a class="brand" href="#">MK <span>Tecky</span></a>
       <nav class="nav-links" aria-label="Primary Navigation">
         <a href="#services">Services</a>
         <a href="#plans">Prepaid &amp; Postpaid</a>
@@ -28,7 +28,7 @@
   <main class="container">
     <section class="hero">
       <div>
-        <span class="badge md-chip">VMK Networks • mktecky.com • Mobile, Laptop &amp; PC Care</span>
+        <span class="badge glass-pill">MK Tecky | Services • mktecky.com • Mobile, Laptop &amp; PC Hardware Care</span>
         <h1>Fast Component Repairs with Prepaid UPI &amp; Postpaid Options</h1>
         <p>
           Genuine part replacements and diagnostics for smartphones, laptops, and desktop PCs.
@@ -37,31 +37,31 @@
         </p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#booking">Schedule Repair</a>
-          <a class="btn btn-tonal" href="#services">Browse Components</a>
+          <a class="btn btn-glass" href="#services">Browse Components</a>
         </div>
         <div class="stats">
-          <div class="stat-box md-surface-1">
+          <div class="stat-box glass-panel">
             <strong>3 Devices</strong>
             <span>Mobile, Laptop &amp; PC</span>
           </div>
-          <div class="stat-box md-surface-1">
+          <div class="stat-box glass-panel">
             <strong>UPI Ready</strong>
             <span>GPay, PhonePe, Paytm</span>
           </div>
-          <div class="stat-box md-surface-1">
+          <div class="stat-box glass-panel">
             <strong>2 Billing Modes</strong>
             <span>Prepaid &amp; Postpaid</span>
           </div>
         </div>
       </div>
 
-      <div class="card md-surface-2" id="booking">
+      <div class="card glass-panel" id="booking">
         <h2 class="card-title">Instant Service &amp; Payment Booking</h2>
         <p class="card-subtitle">
           Select billing mode, component service, and device details.
         </p>
 
-        <div class="mode-switch md-segmented" role="group" aria-label="Billing Mode">
+        <div class="mode-switch glass-inset" role="group" aria-label="Billing Mode">
           <button type="button" id="modePrepaid" class="active" data-mode="prepaid">
             Prepaid (UPI)
           </button>
@@ -72,12 +72,12 @@
 
         <form id="repairForm">
           <label for="serviceSelect">Select Component / Service</label>
-          <select id="serviceSelect" class="md-field"></select>
+          <select id="serviceSelect" class="glass-input"></select>
 
           <label for="deviceModel">Device Brand &amp; Model</label>
           <input
             id="deviceModel"
-            class="md-field"
+            class="glass-input"
             type="text"
             placeholder="e.g., iPhone 13 / Dell Inspiron 15 / Custom Ryzen PC"
             required
@@ -86,7 +86,7 @@
           <label for="customerContact">Your Name &amp; Phone / WhatsApp</label>
           <input
             id="customerContact"
-            class="md-field"
+            class="glass-input"
             type="text"
             placeholder="e.g., Rahul Sharma - +91 98765 43210"
             required
@@ -95,12 +95,12 @@
           <label for="notes">Issue Notes (Optional)</label>
           <textarea
             id="notes"
-            class="md-field"
+            class="glass-input"
             rows="2"
             placeholder="Battery health drop, cracked glass, no display, port loose..."
           ></textarea>
 
-          <div class="summary-box md-surface-3">
+          <div class="summary-box glass-inset">
             <div class="summary-line">
               <span>Billing Mode:</span>
               <strong id="summaryMode">Prepaid (UPI)</strong>
@@ -119,20 +119,20 @@
             </div>
           </div>
 
-          <div id="upiSection" class="upi-box md-upi-surface">
+          <div id="upiSection" class="upi-box glass-upi">
             <strong class="success-text">UPI Payment Details (Prepaid)</strong>
-            <div>UPI ID: <span class="upi-id" id="upiIdText">vmknetworks@okicici</span></div>
+            <div>UPI ID: <span class="upi-id" id="upiIdText">mktecky@okicici</span></div>
             <p class="upi-help">
-              Replace <code>vmknetworks@okicici</code> in <code>scripts/scripts.js</code> with
+              Replace <code>mktecky@okicici</code> in <code>scripts/scripts.js</code> with
               your verified merchant/business UPI ID before going live.
             </p>
             <div class="upi-actions">
               <a id="upiIntentLink" class="btn btn-success" href="#">Open UPI App</a>
-              <button type="button" class="btn btn-outlined" id="copyUpiBtn">Copy UPI ID</button>
+              <button type="button" class="btn btn-glass" id="copyUpiBtn">Copy UPI ID</button>
             </div>
           </div>
 
-          <div id="postpaidSection" class="notice md-surface-3 hidden">
+          <div id="postpaidSection" class="notice glass-inset hidden">
             <strong>Postpaid Selected:</strong> Book your repair slot now with ₹0 advance. Final bill
             is paid after diagnosis/repair completion via UPI, card, or cash.
           </div>
@@ -144,7 +144,7 @@
           </div>
         </form>
 
-        <div id="confirmationBox" class="notice md-surface-3 confirmation-box hidden"></div>
+        <div id="confirmationBox" class="notice glass-inset confirmation-box hidden"></div>
       </div>
     </section>
 
@@ -157,10 +157,10 @@
       </div>
 
       <div class="tabs" role="tablist" aria-label="Service Categories">
-        <button type="button" class="tab md-chip active" data-category="all">All Services</button>
-        <button type="button" class="tab md-chip" data-category="mobile">Mobile</button>
-        <button type="button" class="tab md-chip" data-category="laptop">Laptop</button>
-        <button type="button" class="tab md-chip" data-category="pc">PC / Desktop</button>
+        <button type="button" class="tab glass-pill active" data-category="all">All Services</button>
+        <button type="button" class="tab glass-pill" data-category="mobile">Mobile</button>
+        <button type="button" class="tab glass-pill" data-category="laptop">Laptop</button>
+        <button type="button" class="tab glass-pill" data-category="pc">PC / Desktop</button>
       </div>
 
       <div class="grid-3" id="servicesGrid"></div>
@@ -175,8 +175,8 @@
       </div>
 
       <div class="grid-2">
-        <div class="card md-surface-1">
-          <span class="badge md-chip">Prepaid • UPI</span>
+        <div class="card glass-panel">
+          <span class="badge glass-pill">Prepaid • UPI</span>
           <h3 class="plan-title">Prepaid Service (UPI)</h3>
           <p class="plan-desc">
             Ideal when a known replacement component (battery, display, charging port, SSD, RAM) is needed.
@@ -188,8 +188,8 @@
           </ul>
         </div>
 
-        <div class="card md-surface-1">
-          <span class="badge md-chip chip-green">Postpaid • Pay After Service</span>
+        <div class="card glass-panel">
+          <span class="badge glass-pill badge-green">Postpaid • Pay After Service</span>
           <h3 class="plan-title">Postpaid Service</h3>
           <p class="plan-desc">
             Ideal for motherboard/board faults, multi-component diagnostics, or office PC/laptop maintenance.
@@ -204,9 +204,9 @@
     </section>
   </main>
 
-  <footer class="md-footer">
+  <footer class="glass-footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> VMK Networks (mktecky.com). All rights reserved.</span>
+      <span>© <span id="year"></span> MK Tecky | Services (mktecky.com). All rights reserved.</span>
       <span>Mobile • Laptop • PC Component Service</span>
     </div>
   </footer>

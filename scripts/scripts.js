@@ -1,5 +1,5 @@
-const UPI_ID = "vmknetworks@okicici"; // Update to your live UPI ID
-const PAYEE_NAME = "VMK Networks";
+const UPI_ID = "mktecky@okicici"; // Update to your live UPI ID
+const PAYEE_NAME = "MK Tecky | Services";
 
 const services = [
   // Mobile
@@ -39,13 +39,13 @@ function renderServices() {
     : services.filter((s) => s.cat === currentCategory);
 
   grid.innerHTML = filtered.map((s) => `
-    <div class="card md-surface-1 service-card">
-      <span class="badge md-chip service-badge">${s.cat.toUpperCase()}</span>
+    <div class="card service-card">
+      <span class="badge service-badge">${s.cat.toUpperCase()}</span>
       <h3>${s.name}</h3>
       <p>${s.desc}</p>
       <div class="price-row">
         <span class="price">${formatINR(s.price)}</span>
-        <button type="button" class="btn btn-outlined" data-book-id="${s.id}">Book</button>
+        <button type="button" class="btn btn-outline" data-book-id="${s.id}">Book</button>
       </div>
     </div>
   `).join("");
@@ -119,14 +119,14 @@ function handleBooking(e) {
   const item = services.find((s) => s.id === id);
   const model = document.getElementById("deviceModel").value.trim();
   const contact = document.getElementById("customerContact").value.trim();
-  const refCode = "VMK-" + Math.floor(10000 + Math.random() * 90000);
+  const refCode = "MKT-" + Math.floor(10000 + Math.random() * 90000);
   const payable = billingMode === "prepaid" ? formatINR(item.price * 0.95) : "₹0 now (Postpaid)";
 
   const box = document.getElementById("confirmationBox");
   box.classList.remove("hidden");
   box.innerHTML = `
     <strong>Booking Reference: ${refCode}</strong><br />
-    Provider: <strong>VMK Networks</strong><br />
+    Provider: <strong>MK Tecky | Services</strong><br />
     Service: <strong>${item.name}</strong> (${model})<br />
     Mode: <strong>${billingMode.toUpperCase()}</strong> • Amount Due Now: <strong>${payable}</strong><br />
     Contact: ${contact}
